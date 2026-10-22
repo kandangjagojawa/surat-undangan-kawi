@@ -75,8 +75,6 @@ document.getElementById('docForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
   const docType = document.getElementById('docType').value;
-  const docLang = document.getElementById('docLang').value;
-
   const rawTransliterateFn = window.transliterateKawi;
 
   if (typeof rawTransliterateFn !== 'function') {
@@ -101,7 +99,7 @@ document.getElementById('docForm').addEventListener('submit', function(e) {
 
   // 2. Tujuan
   const penerima = document.getElementById('inputPenerima').value;
-  let labelTujuan = (docLang === 'indonesia') ? "Kepada: Bapak/Ibu/Saudara" : "Kagem: Bapak/Ibu/Sadhérék";
+  const labelTujuan = "Kagem: Bapak/Ibu/Sadhérék";
   document.getElementById('previewTujuanLabel').innerText = t(labelTujuan);
   document.getElementById('previewPenerimaNama').innerText = t(penerima);
 
@@ -110,9 +108,10 @@ document.getElementById('docForm').addEventListener('submit', function(e) {
     document.getElementById('previewDetailAcara').style.display = 'block';
     document.getElementById('previewIsiSuratText').style.display = 'none';
 
-    if (templateData && templateData[docLang]) {
-      const pengantarRaw = getRandomText(templateData[docLang].pengantar);
-      const penutupRaw = getRandomText(templateData[docLang].penutup);
+    if (templateData && (templateData.jawa || templateData.indonesia)) {
+      const templateGroup = templateData.jawa || templateData.indonesia;
+      const pengantarRaw = getRandomText(templateGroup.pengantar);
+      const penutupRaw = getRandomText(templateGroup.penutup);
       document.getElementById('previewPengantar').innerText = t(pengantarRaw);
       document.getElementById('previewPenutup').innerText = t(penutupRaw);
     }
@@ -144,7 +143,7 @@ document.getElementById('docForm').addEventListener('submit', function(e) {
 
   // 4. Pengirim
   const pengirim = document.getElementById('inputPengirim').value;
-  let labelPengirim = (docLang === 'indonesia') ? "Pengirim:" : "Ingkang ngaturi:";
+  const labelPengirim = "Ingkang ngaturi:";
   document.getElementById('previewPengirimLabel').innerText = t(labelPengirim);
   document.getElementById('previewPengirimNama').innerText = t(pengirim);
 
