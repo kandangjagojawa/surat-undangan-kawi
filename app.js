@@ -99,7 +99,7 @@ document.getElementById('docForm').addEventListener('submit', function(e) {
 
   // 2. Tujuan
   const penerima = document.getElementById('inputPenerima').value;
-  const labelTujuan = "Kagem: Bapak/Ibu/Sadhérék";
+  const labelTujuan = "Kagem.: Bapak/Ibu/Sadhérék";
   document.getElementById('previewTujuanLabel').innerText = t(labelTujuan);
   document.getElementById('previewPenerimaNama').innerText = t(penerima);
 
@@ -121,9 +121,9 @@ document.getElementById('docForm').addEventListener('submit', function(e) {
     const tempatAcara = document.getElementById('inputTempatAcara').value;
     const namaAcara = document.getElementById('inputNamaAcara').value;
 
-    document.getElementById('lblHariTanggal').innerText = t("Hari, Tanggal");
-    document.getElementById('lblJam').innerText = t("Jam");
-    document.getElementById('lblTempat').innerText = t("Tempat");
+    document.getElementById('lblHariTanggal').innerText = t("dinten, titimangsa");
+    document.getElementById('lblJam').innerText = t("tabuh");
+    document.getElementById('lblTempat').innerText = t("panggènan");
     document.getElementById('lblAcara').innerText = t("Acara");
 
     document.getElementById('previewHariTanggal').innerText = formatTanggalAksara(tglAcara, t);
